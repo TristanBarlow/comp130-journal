@@ -23,16 +23,20 @@
 
 \maketitle
 
-\section{Introduction}
-The first paper I read for my research journal was titled "GPU Computing"\cite {OwensGPU}. In this paper
-
 \section{}
 
 
-\section{}
+The first paper in this journal \cite {parker2008novel}provides a method of overcoming latency \cite{claypool2006latency} issues stemming from overcrowded online environments. The paper starts by discussing ways in which software engineers have handled latency issues in the past. On such method is done by predicting the position of the player by knowing the current position, the movement speed of the player, the delta time and the previous position\cite{li2007method}. Mathematically described:\begin{equation} Pc = V * \Delta t + Pp \end{equation} This is more commonly known as dead-reckoning. 
+Another method described in this paper that is used in games is to subdivide a crowded world into sub-regions called cells. Synchronisation is only between objects that are located in the same cell or "locale"\cite {barrus1996locales}. Examples of this can be seen in the online game RuneScape\cite {Runescape}. In addition to this, I believe they change the size of these cells depending on how crowded the area is. The author then proceeds to talk about the M-COVE model, this model at a high level is as follows: Does the client have recent detailed orders? If so employ dead reckoning. If not ask is the agent out of the clients view? If so Warp to the destination. If not ask is the agent in a high waiting area? If so wait. If not move. From experiments done by the author the M-COVE model compared with traditional synchronisation  they were able to get 740 more clients in the same environment with exactly the same bandwidth. 
+
+The second paper in this article introduces a way of networking without the use of authoritative servers, through the use of peer-to-peer networks\cite{iimura2004zoned}. Creating an online game in this way is advantageous for companies that do not want to incur the costs of server maintenance.  In this paper, similar to the first, they mention this idea of  'zones', where all the global states of a specific area are bound to that areas zone data. They also mention how player data can be bound in these zones when the player is in that specific area. They go on to talk about "zone owners" the client responsible for that zone. When the client becomes the owner it also becomes the authority of that zone. This means that any conflicts that occur in the zone will be resolved dependent on the zone owners state. Using a peer-to-peer network may require less resources but it also increases latency. The latency will be dependent on the zone owners connection to other clients which may be unreliable. An example of this is with the old Call Of Duty games. They were peer-to-peer. At the beginning of the game, one client was chosen to be the host being responsible for the global states. If the hosts bandwidth fell, the other clients would experience an increase in their latency. This means the other players were being correct to the hosts game state as the host was the authoritative figure. See "Lag Switches"\cite {LagSwitch} for more details on how this was abused. So while the Zoned federation model proposed in this paper may be beneficial in some cases it increases the chances for exploitation.
+
+In this next paper\cite {pellegrino2003bandwidth} the author analyses the client-server and the peer-to-peer architectures from two main viewpoints: Bandwith usage and inconsistency  resolution latency. The author starts by saying that "players often use limited-bandwidth" and goes on to say some may use dialup. While this may have been a stronger point back when this paper was published(2003), the bandwidth nowadays far exceeds the bandwidth found in 2003. One interesting concept this paper discusses is that of inconsistency resolution latency, this is the time it takes for two nodes with inconsistent states to resolve. The author also suggests a new architecture called peer to peer with a central arbiter or (PP-CA). In this architecture players exchange game state updates like they do in the peer to peer model. They also send updates to the central arbiter, the CA's role is to simulate a game state from the updates it receives and detects any inconsistencies with the clients. The CA will not send any updates until an inconsistency is found, at that time it will send an update to correct it, state consistency is paramount in online games\cite {pantel2002impact}.Even though other researchers have found PP-CA architecture to produce "good latency, good administrative control and good scalability"\cite[p.22]{sutinrerk2006mirrored} also stating that it is a "good match for any real-time game"\cite[p.22]{sutinrerk2006mirrored} examples of this actually being implemented in the games industry are non-existent. 
 
 
-\section{}
+
+
+
 
 \section{Conclusion}
 
